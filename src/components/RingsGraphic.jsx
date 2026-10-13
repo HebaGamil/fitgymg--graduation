@@ -1,0 +1,37 @@
+export default function RingsGraphic({ className = "" }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 640 640"
+      aria-hidden="true"
+    >
+      {/* الدائرة الكبيرة المنقطة والمتحركة */}
+      <circle
+        className="dotted-orbit"
+        cx="320"
+        cy="320"
+        r="300"
+        fill="none"
+        stroke="#1B4A38"
+        strokeWidth="3"
+        strokeDasharray="3 9"
+        strokeLinecap="round"
+      />
+
+      {/* الدواير الداخلية الثابتة */}
+      <g fill="none" strokeWidth="3">
+        <circle cx="320" cy="320" r="236" stroke="#1D9E75" />
+        <circle
+          cx="320"
+          cy="320"
+          r="172"
+          stroke="#C6F135"
+          strokeWidth="5"
+        />
+        <circle cx="320" cy="320" r="108" stroke="#1D9E75" />
+      </g>
+
+      <circle cx="320" cy="320" r="46" fill="#C6F135" />
+    </svg>
+  )
+}
