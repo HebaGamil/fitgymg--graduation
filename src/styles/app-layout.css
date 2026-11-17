@@ -1,5 +1,243 @@
-.app{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
-.side{background:#0B2E22;color:#9FB3A8;padding:24px 14px;display:flex;flex-direction:column;gap:6px;position:sticky;top:0;height:100vh}.side .logo{margin:0 8px 22px}
-.nv{border:0;background:none;color:inherit;padding:12px 14px;border-radius:12px;font-size:14px;text-align:right}.nv.on{background:var(--lime);color:#0B2E22;font-weight:700}.exit{margin-top:auto}
-.main{padding:30px 36px;max-width:1100px;width:100%}
-@media(max-width:820px){.app{grid-template-columns:1fr}.side{position:fixed;bottom:0;left:0;right:0;top:auto;height:auto;flex-direction:row;justify-content:space-around;padding:6px;z-index:9}.side .logo,.exit{display:none}.nv{font-size:11px;padding:8px 6px}.main{padding:20px 16px 90px}}
+
+/* =========================================
+   NutriFit - Figma Layout
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.app {
+  width: 100%;
+  max-width: 1439px;
+  min-height: 1024px;
+  margin: 0 auto;
+  position: relative;
+  direction: ltr;
+
+  background-color: #003b12;
+  background-image:
+    url("/nutrifit-banner.png"),
+    linear-gradient(180deg, #003b12 0%, #001b0e 100%);
+  background-repeat: no-repeat, no-repeat;
+  background-position: top center, center;
+  background-size: 100% 220px, 100% 100%;
+
+  color: white;
+  overflow: hidden;
+}
+
+/* =========================================
+   Navigation
+========================================= */
+
+.app .nf-navigation {
+  width: 100%;
+  padding: 180px 2% 0;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* First row: 3 centered buttons */
+
+.app .nf-nav-top {
+  width: 100%;
+  min-height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: clamp(20px, 3.6vw, 52px);
+  position: relative;
+}
+
+/* Second row: 2 centered buttons */
+
+.app .nf-nav-bottom {
+  width: 100%;
+  min-height: 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: clamp(50px, 8vw, 120px);
+  margin-top: 15px;
+}
+
+/* Navigation buttons */
+
+.app .nf-button {
+  width: clamp(190px, 19.46vw, 280px);
+  max-width: 100%;
+  height: 60px;
+  flex: 0 1 280px;
+
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 16px !important;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  background: rgba(41, 201, 81, 0.4) !important;
+  color: #ffffff !important;
+
+  border: none !important;
+  border-radius: 20px !important;
+  box-shadow: none !important;
+
+  font-family: Arial, sans-serif;
+  font-size: clamp(16px, 1.67vw, 24px);
+  font-weight: 400;
+
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.app .nf-button.selected,
+.app .nf-button:hover {
+  background: #29C951 !important;
+  color: #00250b !important;
+}
+
+/* Profile button */
+
+.app .nf-profile {
+  width: 72px;
+  height: 62px;
+  flex-shrink: 0;
+
+  position: absolute;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  appearance: none;
+  background: #dedede !important;
+  color: #111111 !important;
+
+  border: none !important;
+  border-radius: 50% !important;
+  box-shadow: none !important;
+
+  font-size: 34px;
+  cursor: pointer;
+}
+
+/* Second row button sizing */
+
+.app .nf-nav-bottom .nf-button {
+  width: clamp(190px, 19.46vw, 280px);
+  flex: 0 1 280px;
+}
+
+/* =========================================
+   Main Content
+========================================= */
+
+.app .main {
+  width: 100%;
+  max-width: none;
+  min-height: 380px;
+
+  padding: 15px 2% 0;
+  margin: 0;
+
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================
+   Logout
+========================================= */
+
+.app .nf-logout-area {
+  width: 96%;
+  margin: 10px auto 15px;
+
+  display: flex;
+  justify-content: flex-end;
+}
+
+.app .nf-logout {
+  width: 190px;
+  height: 45px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 14px;
+
+  appearance: none;
+  background: rgba(41, 201, 81, 0.4) !important;
+  color: white !important;
+
+  border: none !important;
+  border-radius: 15px !important;
+  box-shadow: none !important;
+
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.app .nf-logout:hover {
+  background: #29C951 !important;
+  color: #00250b !important;
+}
+
+/* =========================================
+   Responsive
+========================================= */
+
+@media (max-width: 700px) {
+  .app {
+    min-height: 100vh;
+    background-size: auto 220px, 100% 100%;
+  }
+
+  .app .nf-navigation {
+    padding: 180px 12px 0;
+  }
+
+  .app .nf-nav-top {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .app .nf-nav-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .app .nf-button {
+    width: 100%;
+    max-width: none;
+    height: 45px;
+    font-size: 15px;
+    border-radius: 14px !important;
+  }
+
+  .app .nf-profile {
+    position: static;
+    width: 45px;
+    height: 45px;
+  }
+
+  .app .main {
+    padding: 15px 10px;
+  }
+
+  .app .nf-logout {
+    font-size: 18px;
+  }
+}

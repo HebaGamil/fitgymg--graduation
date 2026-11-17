@@ -1,0 +1,1254 @@
+/* ================================
+   NutriFit - Figma Dashboard
+================================ */
+
+.nf-dashboard,
+.nf-dashboard * {
+  box-sizing: border-box;
+}
+
+.nf-dashboard {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0 0 15px;
+  direction: ltr;
+  overflow-x: hidden;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 75%,
+      rgba(0, 105, 25, 0.75),
+      transparent 65%
+    ),
+    linear-gradient(
+      145deg,
+      #00250b 0%,
+      #003b12 55%,
+      #001e09 100%
+    );
+}
+
+/* Banner */
+
+.nf-banner {
+  width: 100%;
+  height: clamp(175px, 21vw, 300px);
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.nf-banner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* Navigation */
+
+.nf-navigation {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: 52px 52px;
+  column-gap: 15px;
+  row-gap: 30px;
+  align-items: center;
+  padding: 8px 2% 0;
+  margin-bottom: 25px;
+}
+
+.nf-nav-button {
+  min-width: 0;
+  min-height: 42px;
+  padding: 5px 13px;
+  border: none;
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  background: #08762e;
+  color: #f4fff5;
+
+  font-family: inherit;
+  font-size: clamp(15px, 2vw, 27px);
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nf-nav-button:hover {
+  background: #1ebd50;
+  color: #00290c;
+}
+
+/* Active Navigation Button */
+
+.nf-nav-button.active {
+  background: #21c653;
+  color: #001d08;
+}
+
+.nf-nav-button svg,
+.nf-profile svg,
+.nf-logout svg {
+  width: 27px;
+  height: 27px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.nf-home {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  width: 78%;
+}
+
+.nf-nutrition {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+  width: 82%;
+}
+
+.nf-exercise {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: center;
+  width: 82%;
+}
+
+.nf-profile {
+  grid-column: 4;
+  grid-row: 1;
+  justify-self: end;
+
+  width: 68px;
+  height: 62px;
+  border: none;
+  border-radius: 50%;
+  background: #eeeeee;
+  color: #111111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.nf-profile:hover {
+  background: #c8f135;
+}
+
+.nf-profile svg {
+  width: 34px;
+  height: 34px;
+}
+
+.nf-progress {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: center;
+  width: 82%;
+}
+
+.nf-supplements {
+  grid-column: 3;
+  grid-row: 2;
+  justify-self: center;
+  width: 82%;
+}
+
+/* Dashboard cards */
+
+.nf-dashboard-cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(20px, 8vw, 115px);
+  align-items: stretch;
+  padding: 0 2%;
+}
+
+.nf-card {
+  min-width: 0;
+  height: 285px;
+  padding: 9px 9px;
+  border-radius: 14px;
+  background: #dedede;
+  color: #101010;
+  overflow: hidden;
+}
+
+.nf-card h2 {
+  margin: 0 0 10px;
+  padding: 0;
+  font-size: clamp(18px, 2vw, 25px);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+/* Vital signs */
+
+.nf-info-row {
+  min-height: 41px;
+  padding: 5px 9px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+
+  border-bottom: 1px solid #888888;
+  font-size: clamp(15px, 1.9vw, 24px);
+}
+
+.nf-info-row:last-child {
+  border-bottom: none;
+}
+
+.nf-info-row b {
+  color: #777777;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+/* Calories */
+
+.nf-calories {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+.nf-calories h2 {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  justify-self: stretch;
+  width: 100%;
+}
+
+.nf-calorie-circle {
+  grid-column: 2;
+  grid-row: 2;
+
+  width: min(175px, 100%);
+  height: 155px;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  background: #4cac37;
+  color: #071807;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto;
+  font-size: clamp(21px, 2.2vw, 27px);
+  font-weight: 400;
+}
+
+.nf-remaining {
+  grid-column: 1;
+  grid-row: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #777777;
+  font-size: clamp(16px, 2vw, 24px);
+  line-height: 1.25;
+  text-align: center;
+}
+
+.nf-remaining b {
+  font-weight: 400;
+}
+
+/* Macros */
+
+.nf-macros {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.nf-macros h2 {
+  margin-bottom: 12px;
+}
+
+.nf-macro {
+  margin-bottom: 17px;
+  padding: 0 8px;
+}
+
+.nf-macro-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  margin-bottom: 12px;
+
+  color: #777777;
+  font-size: clamp(14px, 1.8vw, 23px);
+  white-space: nowrap;
+}
+
+.nf-macro-label b {
+  font-weight: 400;
+}
+
+.nf-progress-track {
+  width: 100%;
+  height: 7px;
+  border-radius: 2px;
+  background: #bdbdbd;
+  overflow: hidden;
+}
+
+.nf-progress-fill {
+  height: 100%;
+  background: #777777;
+  transition: width 0.3s ease;
+}
+
+/* Logout */
+
+.nf-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 2%;
+  margin-top: 20px;
+}
+
+.nf-logout {
+  min-width: 170px;
+  min-height: 42px;
+  padding: 5px 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  border: none;
+  border-radius: 14px;
+  background: #08762e;
+  color: white;
+
+  font-family: inherit;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.nf-logout:hover {
+  background: #1ebd50;
+  color: #001d08;
+}
+
+/* Responsive */
+
+@media (max-width: 800px) {
+  .nf-dashboard-cards {
+    gap: 18px;
+  }
+
+  .nf-card {
+    height: 270px;
+  }
+
+  .nf-info-row {
+    min-height: 38px;
+  }
+
+  .nf-calorie-circle {
+    width: min(125px, 100%);
+    height: 125px;
+  }
+
+  .nf-macro {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .nf-banner {
+    height: 150px;
+  }
+
+  .nf-navigation {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, 45px);
+    gap: 12px;
+    padding: 10px 12px;
+  }
+
+  .nf-home,
+  .nf-nutrition,
+  .nf-exercise,
+  .nf-progress,
+  .nf-supplements,
+  .nf-profile {
+    grid-column: auto;
+    grid-row: auto;
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .nf-profile {
+    height: 45px;
+    border-radius: 12px;
+  }
+
+  .nf-nav-button {
+    width: 100%;
+    min-height: 42px;
+    font-size: 16px;
+  }
+
+  .nf-dashboard-cards {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 0 15px;
+  }
+
+  .nf-card {
+    height: auto;
+    min-height: 285px;
+    padding: 14px;
+  }
+
+  .nf-calorie-circle {
+    width: min(150px, 100%);
+    height: 150px;
+  }
+
+  .nf-info-row {
+    min-height: 40px;
+    font-size: 20px;
+  }
+
+  .nf-macro-label {
+    font-size: 19px;
+  }
+
+  .nf-footer {
+    padding: 0 15px;
+  }
+}
+
+/* ================================
+   Progress Section
+================================ */
+
+.nf-progress-content {
+  width: 100%;
+  padding: 0 3.5%;
+  display: grid;
+  grid-template-columns: minmax(0, 3.2fr) minmax(180px, 1fr);
+  gap: 5%;
+  align-items: center;
+}
+
+.nf-progress-chart {
+  width: 100%;
+  height: 300px;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 65px;
+  background: #f5f6fc;
+}
+
+.nf-progress-chart svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.nf-progress-stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 35px;
+}
+
+.nf-progress-stat {
+  min-height: 73px;
+  padding: 9px 10px;
+  border-radius: 45px;
+  background: #dedede;
+  color: #111111;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  font-size: clamp(16px, 1.8vw, 23px);
+}
+
+.nf-progress-stat b {
+  font-weight: 400;
+}
+
+.nf-progress-note {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: #d7eadb;
+  font-size: 13px;
+  text-align: center;
+}
+
+.nf-section-placeholder {
+  min-height: 280px;
+  margin: 0 3.5%;
+  padding: 35px;
+  border-radius: 20px;
+  background: #dedede;
+  color: #111111;
+  text-align: center;
+}
+
+.nf-section-placeholder h2 {
+  font-weight: 400;
+}
+
+/* Progress responsive */
+
+@media (max-width: 700px) {
+  .nf-progress-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 15px;
+  }
+
+  .nf-progress-chart {
+    height: 230px;
+    border-radius: 35px;
+  }
+
+  .nf-progress-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .nf-progress-stat {
+    min-height: 65px;
+  }
+
+  .nf-progress-note {
+    grid-column: 1;
+  }
+}
+
+
+
+
+/* =================================
+   NutriFit - Full Responsive Layout
+================================= */
+
+/* Flexible dashboard cards */
+.nf-dashboard-cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 4vw, 65px);
+  align-items: stretch;
+  padding: 0 clamp(15px, 2.5vw, 36px);
+}
+
+/* Cards sizing */
+.nf-card {
+  width: 100%;
+  height: auto;
+  min-width: 0;
+  min-height: 285px;
+  overflow: visible;
+}
+
+/* Vital signs */
+.nf-vitals {
+  min-height: 285px;
+}
+
+.nf-info-row {
+  min-height: 41px;
+  font-size: clamp(15px, 1.5vw, 22px);
+}
+
+/* Calories */
+.nf-calories {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  align-items: center;
+  justify-items: center;
+  gap: 8px;
+}
+
+.nf-calories h2 {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  justify-self: stretch;
+}
+
+.nf-calorie-circle {
+  grid-column: 2;
+  grid-row: 2;
+  width: min(175px, 100%);
+  height: auto;
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+
+.nf-remaining {
+  grid-column: 1;
+  grid-row: 2;
+  text-align: center;
+  font-size: clamp(15px, 1.6vw, 22px);
+}
+
+/* Macros */
+.nf-macros {
+  min-width: 0;
+}
+
+.nf-macro-label {
+  font-size: clamp(14px, 1.5vw, 21px);
+}
+
+/* Navigation */
+.nf-nav-button {
+  font-size: clamp(14px, 1.8vw, 25px);
+}
+
+/* Tablet */
+@media (max-width: 950px) {
+  .nf-dashboard-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .nf-macros {
+    grid-column: 1 / -1;
+  }
+
+  .nf-macros .nf-macro {
+    margin-bottom: 15px;
+  }
+
+  .nf-card {
+    min-height: 285px;
+  }
+
+  .nf-calorie-circle {
+    width: min(155px, 100%);
+  }
+
+  .nf-navigation {
+    column-gap: 10px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+  .nf-banner {
+    height: clamp(130px, 35vw, 190px);
+  }
+
+  .nf-navigation {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto;
+    gap: 12px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+  }
+
+  .nf-home,
+  .nf-nutrition,
+  .nf-exercise,
+  .nf-progress,
+  .nf-supplements,
+  .nf-profile {
+    grid-column: auto;
+    grid-row: auto;
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .nf-nav-button {
+    min-height: 44px;
+    font-size: 16px;
+  }
+
+  .nf-profile {
+    height: 44px;
+    min-height: 44px;
+    border-radius: 12px;
+  }
+
+  .nf-dashboard-cards {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding: 0 15px;
+  }
+
+  .nf-card {
+    width: 100%;
+    min-height: 285px;
+    padding: 14px;
+  }
+
+  .nf-vitals {
+    min-height: 285px;
+  }
+
+  .nf-info-row {
+    min-height: 41px;
+    font-size: clamp(17px, 4vw, 20px);
+  }
+
+  .nf-calorie-circle {
+    width: min(150px, 100%);
+  }
+
+  .nf-remaining {
+    font-size: 19px;
+  }
+
+  .nf-macros {
+    grid-column: auto;
+  }
+
+  .nf-macro-label {
+    font-size: 18px;
+  }
+
+  .nf-footer {
+    padding: 0 15px;
+  }
+
+  .nf-logout {
+    min-width: 145px;
+    font-size: 20px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 380px) {
+  .nf-card {
+    padding: 11px;
+  }
+
+  .nf-calorie-circle {
+    width: min(125px, 100%);
+  }
+
+  .nf-remaining {
+    font-size: 16px;
+  }
+
+  .nf-info-row {
+    font-size: 16px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .nf-nav-button {
+    padding: 5px 8px;
+    font-size: 14px;
+    gap: 5px;
+  }
+
+  .nf-nav-button svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* Progress responsive */
+@media (max-width: 700px) {
+  .nf-progress-content {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    padding: 0 15px;
+  }
+
+  .nf-progress-chart {
+    height: clamp(190px, 55vw, 250px);
+    border-radius: 30px;
+  }
+
+  .nf-progress-stats {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .nf-progress-note {
+    grid-column: 1;
+  }
+}
+
+
+/* =================================
+   Workout Section
+================================= */
+
+.nf-workout-content {
+  width: 100%;
+  padding: 0 clamp(15px, 3.5vw, 55px);
+  color: #ffffff;
+}
+
+/* Weekly Schedule */
+
+.nf-weekly-card {
+  width: 100%;
+  min-height: 200px;
+  padding: 20px 25px 12px;
+  border-radius: 35px;
+  background: linear-gradient(110deg, #15923c, #42c65d, #15923c);
+  color: #111111;
+}
+
+.nf-weekly-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.nf-weekly-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nf-calendar-icon {
+  color: white;
+  font-size: 38px;
+  line-height: 1;
+}
+
+.nf-weekly-title h2 {
+  margin: 0;
+  color: white;
+  font-size: clamp(19px, 2.3vw, 30px);
+  letter-spacing: 3px;
+}
+
+.nf-weekly-legend {
+  display: flex;
+  align-items: center;
+  gap: clamp(15px, 3vw, 40px);
+  flex-wrap: wrap;
+}
+
+.nf-weekly-legend span {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: clamp(14px, 1.8vw, 23px);
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.nf-star {
+  display: inline-block;
+  font-size: clamp(40px, 6vw, 75px);
+  line-height: 1;
+}
+
+.training-star {
+  color: #000000;
+}
+
+.rest-star {
+  color: #dedede;
+}
+
+.nf-weekly-legend .nf-star {
+  font-size: 42px;
+}
+
+.nf-weekly-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  align-items: center;
+  gap: 5px;
+  margin-top: 12px;
+}
+
+.nf-weekly-day {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.nf-day-name {
+  color: #175d2b;
+  font-size: clamp(14px, 1.8vw, 23px);
+  letter-spacing: 2px;
+}
+
+/* Today's Exercise */
+
+.nf-today-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 10px 15px 15px;
+  color: #ffffff;
+  font-size: clamp(20px, 2vw, 27px);
+  letter-spacing: 2px;
+}
+
+.nf-workout-type {
+  padding: 5px 18px;
+  border-radius: 20px;
+  background: #21bd50;
+  color: #00300e;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.nf-exercise-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2.25fr) minmax(210px, 0.8fr);
+  gap: clamp(15px, 2vw, 30px);
+  align-items: stretch;
+}
+
+/* Exercise List */
+
+.nf-exercise-list {
+  min-width: 0;
+  min-height: 340px;
+  padding: 15px 12px;
+  border-radius: 35px;
+  background: linear-gradient(110deg, #087b32, #1ca348);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 18px;
+}
+
+.nf-exercise-item {
+  width: 100%;
+  min-width: 0;
+  min-height: 43px;
+  padding: 0 10px;
+  border-radius: 15px;
+  background: #075326;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nf-exercise-number {
+  width: 29px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 18px;
+  background: #20c85a;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.nf-exercise-name {
+  min-width: 0;
+  flex: 1;
+  color: #ffffff;
+  font-size: clamp(15px, 2.1vw, 27px);
+  overflow-wrap: anywhere;
+}
+
+.nf-exercise-reps {
+  flex-shrink: 0;
+  color: #ffffff;
+  font-size: clamp(10px, 1.1vw, 14px);
+  white-space: nowrap;
+}
+
+/* Tip / Rest / Water */
+
+.nf-workout-tips {
+  min-width: 0;
+  padding: 12px 18px;
+  border-radius: 35px;
+  background: linear-gradient(135deg, #756b0e, #625611);
+  color: #080800;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.nf-tip-item {
+  position: relative;
+  min-height: 105px;
+  padding: 5px 5px 15px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+.nf-tip-item:last-child {
+  border-bottom: none;
+  padding-bottom: 5px;
+}
+
+.nf-tip-icon {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  color: #ffae00;
+  font-size: 35px;
+  line-height: 1;
+}
+
+.nf-tip-item h3 {
+  margin: 3px 0 18px;
+  font-size: clamp(17px, 1.8vw, 23px);
+  font-weight: 400;
+}
+
+.nf-tip-item p {
+  max-width: 230px;
+  margin: 0 auto;
+  font-size: clamp(13px, 1.3vw, 17px);
+  line-height: 1.35;
+}
+
+.nf-rest-message {
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.nf-rest-message .nf-rest-star {
+  color: #dedede;
+  font-size: 65px;
+}
+
+.nf-rest-message h3 {
+  margin: 10px 0;
+  font-size: 25px;
+}
+
+.nf-rest-message p {
+  font-size: 16px;
+}
+
+.nf-injury-note {
+  margin: 15px 5px;
+  color: #d7eadb;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Workout Tablet */
+
+@media (max-width: 900px) {
+  .nf-weekly-card {
+    padding: 18px;
+  }
+
+  .nf-weekly-heading {
+    justify-content: center;
+  }
+
+  .nf-weekly-title {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nf-weekly-legend {
+    justify-content: center;
+  }
+
+  .nf-exercise-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nf-workout-tips {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .nf-tip-item {
+    min-height: 115px;
+    border-bottom: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.65);
+  }
+
+  .nf-tip-item:last-child {
+    border-right: none;
+  }
+}
+
+/* Workout Mobile */
+
+@media (max-width: 600px) {
+  .nf-workout-content {
+    padding: 0 12px;
+  }
+
+  .nf-weekly-card {
+    min-height: auto;
+    padding: 15px 8px;
+    border-radius: 22px;
+  }
+
+  .nf-weekly-title h2 {
+    font-size: 19px;
+    letter-spacing: 1px;
+  }
+
+  .nf-calendar-icon {
+    font-size: 28px;
+  }
+
+  .nf-weekly-legend {
+    gap: 12px;
+  }
+
+  .nf-weekly-legend span {
+    gap: 5px;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+
+  .nf-weekly-legend .nf-star {
+    font-size: 25px;
+  }
+
+  .nf-weekly-days {
+    gap: 0;
+    margin-top: 15px;
+  }
+
+  .nf-star {
+    font-size: clamp(27px, 8vw, 42px);
+  }
+
+  .nf-day-name {
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+
+  .nf-today-title {
+    margin: 15px 5px;
+    font-size: 20px;
+  }
+
+  .nf-exercise-list {
+    min-height: auto;
+    padding: 12px 8px;
+    gap: 13px;
+    border-radius: 22px;
+  }
+
+  .nf-exercise-item {
+    min-height: 48px;
+    padding: 5px 7px;
+    gap: 7px;
+    border-radius: 12px;
+  }
+
+  .nf-exercise-number {
+    width: 27px;
+    height: 35px;
+    font-size: 18px;
+  }
+
+  .nf-exercise-name {
+    font-size: clamp(13px, 3.5vw, 17px);
+  }
+
+  .nf-exercise-reps {
+    font-size: 10px;
+  }
+
+  .nf-workout-tips {
+    grid-template-columns: 1fr;
+    padding: 12px;
+    border-radius: 22px;
+  }
+
+  .nf-tip-item {
+    min-height: 90px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.65);
+  }
+
+  .nf-tip-item:last-child {
+    border-bottom: none;
+  }
+
+  .nf-tip-item h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  .nf-tip-item p {
+    font-size: 14px;
+  }
+}
+
+/* Very Small Mobile */
+
+@media (max-width: 380px) {
+  .nf-weekly-title h2 {
+    font-size: 16px;
+  }
+
+  .nf-weekly-legend span {
+    font-size: 10px;
+  }
+
+  .nf-weekly-legend .nf-star {
+    font-size: 21px;
+  }
+
+  .nf-exercise-item {
+    flex-wrap: wrap;
+  }
+
+  .nf-exercise-name {
+    font-size: 13px;
+  }
+
+  .nf-exercise-reps {
+    font-size: 9px;
+  }
+}
